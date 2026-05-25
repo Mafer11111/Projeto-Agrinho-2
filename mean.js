@@ -29,9 +29,9 @@ const questions = [
   {
     question: "O que significa reciclar?",
     answers: [
-      { text: "Jogar lixo na rua", correct: false },
       { text: "Transformar resíduos em novos produtos", correct: true },
       { text: "Queimar lixo", correct: false },
+      { text: "Jogar lixo na rua", correct: false },
       { text: "Enterrar resíduos", correct: false }
     ]
   },
@@ -52,39 +52,83 @@ const nextButton = document.getElementById("next-btn");
 const timerElement = document.getElementById("timer");
 const progressElement = document.querySelector(".progress");
 
-let currentQuestion = 0;
+let currentQuestionIndex = 0;
 let score = 0;
 let timeLeft = 15;
 let timer;
 
 function startQuiz() {
+  currentQuestionIndex = 0;
+  score = 0;
+
+  document.querySelector(".quiz-box").classList.remove("hidden");
+  document.querySelector(".result-box").classList.add("hidden");
+
   showQuestion();
-  startTimer();
 }
 
 function showQuestion() {
+
   resetState();
 
-  let current = questions[currentQuestion];
+  let currentQuestion = questions[currentQuestionIndex];
 
   document.getElementById("progress").innerText =
-    `Pergunta ${currentQuestion + 1}/${questions.length}`;
+    `Pergunta ${currentQuestionIndex + 1}/${questions.length}`;
 
-  questionElement.innerText = current.question;
+  questionElement.innerText = currentQuestion.question;
 
-  current.answers.forEach(answer => {
+  currentQuestion.answers.forEach(answer => {
+
     const button = document.createElement("button");
+
     button.innerText = answer.text;
-    button.addEventListener("click", () => selectAnswer(button, answer.correct));
+
+    button.addEventListener("click", () => {
+      selectAnswer(button, answer.correct);
+    });
+
     answersElement.appendChild(button);
   });
 
   updateProgressBar();
+
+  startTimer();
 }
 
 function resetState() {
+
+  clearInterval(timer);
+
   nextButton.style.display = "none";
+
   answersElement.innerHTML = "";
+
+  timeLeft = 15;
+
+  timerElement.innerText = `⏳ ${timeLeft}`;
+}
+
+function startTimer() {
+
+  timer = setInterval(() => {
+
+    timeLeft--;
+
+    timerElement.innerText = `⏳ ${timeLeft}`;
+
+    if (timeLeft <= 0) {
+
+      clearInterval(timer);
+
+      Array.from(answersElement.children).forEach(btn => {
+        btn.disabled = true;
+      });
+
+      nextButton.style.display = "block";
+    }
+
+  }, 1000);
 }
 
 function selectAnswer(button, correct) {
@@ -99,71 +143,69 @@ function selectAnswer(button, correct) {
   }
 
   Array.from(answersElement.children).forEach(btn => {
+
     btn.disabled = true;
+
+    const answerText = btn.innerText;
+
+    const correctAnswer = questions[currentQuestionIndex]
+      .answers.find(a => a.correct);
+
+    if (answerText === correctAnswer.text) {
+      btn.classList.add("correct");
+    }
   });
 
   nextButton.style.display = "block";
 }
 
 nextButton.addEventListener("click", () => {
-  currentQuestion++;
 
-  if (currentQuestion < questions.length) {
-    timeLeft = 15;
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex < questions.length) {
     showQuestion();
-    startTimer();
   } else {
     showResult();
   }
 });
 
-function startTimer() {
-
-  timerElement.innerText = `⏳ ${timeLeft}`;
-
-  timer = setInterval(() => {
-
-    timeLeft--;
-
-    timerElement.innerText = `⏳ ${timeLeft}`;
-
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      nextButton.style.display = "block";
-
-      Array.from(answersElement.children).forEach(btn => {
-        btn.disabled = true;
-      });
-    }
-
-  }, 1000);
-}
-
 function updateProgressBar() {
-  let progress = ((currentQuestion + 1) / questions.length) * 100;
+
+  let progress =
+    ((currentQuestionIndex + 1) / questions.length) * 100;
+
   progressElement.style.width = `${progress}%`;
 }
 
 function showResult() {
 
+  clearInterval(timer);
+
   document.querySelector(".quiz-box").classList.add("hidden");
+
   document.querySelector(".result-box").classList.remove("hidden");
 
   document.getElementById("score").innerText =
-    `Você acertou ${score} de ${questions.length}`;
+    `Você acertou ${score} de ${questions.length} perguntas`;
 }
 
 document.getElementById("save-btn").addEventListener("click", () => {
 
-  const name = document.getElementById("player-name").value;
+  const playerName =
+    document.getElementById("player-name").value;
 
-  if (!name) return;
+  if (playerName === "") {
+    alert("Digite seu nome!");
+    return;
+  }
 
-  const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+  let ranking =
+    JSON.parse(localStorage.getItem("ranking")) || [];
 
   ranking.push({
-    name,
-    score
+    name: playerName,
+    score: score
   });
 
   ranking.sort((a, b) => b.score - a.score);
@@ -179,13 +221,15 @@ function renderRanking() {
 
   rankingList.innerHTML = "";
 
-  const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+  let ranking =
+    JSON.parse(localStorage.getItem("ranking")) || [];
 
   ranking.slice(0, 5).forEach(player => {
 
     const li = document.createElement("li");
 
-    li.innerText = `${player.name} - ${player.score} pontos`;
+    li.innerText =
+      `${player.name} - ${player.score} pontos`;
 
     rankingList.appendChild(li);
   });
