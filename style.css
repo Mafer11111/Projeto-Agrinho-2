@@ -2,122 +2,229 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 body {
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+}
+
+/* HEADER */
+
+header {
+  background: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
+
+header h1 {
+  font-size: 3rem;
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+/* HERO */
+
+.hero {
+  height: 450px;
+  background-image: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.5);
+  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
-}
-
-.container {
-  width: 90%;
-  max-width: 600px;
-  background: rgba(255,255,255,0.1);
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-}
-
-h1 {
   text-align: center;
+  padding: 20px;
+}
+
+.overlay h2 {
+  font-size: 3rem;
   margin-bottom: 20px;
 }
 
-.top-bar {
+.overlay p {
+  font-size: 1.3rem;
+  max-width: 700px;
+}
+
+/* CARDS */
+
+.cards {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  justify-content: center;
+  gap: 25px;
+  padding: 60px 20px;
+  flex-wrap: wrap;
 }
 
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.progress {
-  height: 100%;
-  width: 0%;
-  background: #00ff88;
-  transition: 0.3s;
-}
-
-.quiz-box h2 {
-  margin-bottom: 20px;
-}
-
-#answers button {
-  width: 100%;
-  margin: 10px 0;
-  padding: 15px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+.card {
   background: white;
-  color: black;
-  font-size: 16px;
+  width: 300px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
   transition: 0.3s;
 }
 
-#answers button:hover {
-  transform: scale(1.03);
+.card:hover {
+  transform: translateY(-10px);
 }
 
-.correct {
-  background: #00c853 !important;
-  color: white !important;
+.card h3 {
+  margin-bottom: 15px;
+  color: #2e7d32;
 }
 
-.wrong {
-  background: #d50000 !important;
-  color: white !important;
+/* CONTADOR */
+
+.dados {
+  background: #1b5e20;
+  color: white;
+  text-align: center;
+  padding: 70px 20px;
 }
 
-#next-btn,
-#save-btn {
-  margin-top: 20px;
-  width: 100%;
-  padding: 15px;
-  border: none;
-  border-radius: 10px;
-  background: #00ff88;
-  font-size: 18px;
-  cursor: pointer;
+.dados h2 {
+  margin-bottom: 30px;
 }
 
-.hidden {
-  display: none;
+.contador span {
+  font-size: 5rem;
+  font-weight: bold;
 }
 
-.result-box {
+/* TIMELINE */
+
+.timeline {
+  padding: 80px 20px;
+  background: white;
   text-align: center;
 }
 
-#player-name {
-  width: 100%;
-  padding: 12px;
-  margin-top: 15px;
-  border-radius: 10px;
-  border: none;
+.timeline h2 {
+  color: #2e7d32;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
 }
 
-#ranking {
+.timeline-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.timeline-item {
+  width: 160px;
+}
+
+.circle {
+  width: 80px;
+  height: 80px;
+  background: #2e7d32;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.line {
+  width: 60px;
+  height: 4px;
+  background: #81c784;
+}
+
+/* MAPA */
+
+.mapa-section {
+  padding: 60px 20px;
+  background: #f4f4f4;
+  text-align: center;
+}
+
+.mapa-section h2 {
+  margin-bottom: 30px;
+  color: #2e7d32;
+}
+
+#map {
+  height: 500px;
+  width: 90%;
+  margin: auto;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+}
+
+/* CURIOSIDADES */
+
+.curiosidades {
+  padding: 60px 20px;
+  background: white;
+}
+
+.curiosidades h2 {
+  margin-bottom: 25px;
+  color: #2e7d32;
+  text-align: center;
+}
+
+.curiosidades ul {
   list-style: none;
-  margin-top: 15px;
+  max-width: 800px;
+  margin: auto;
 }
 
-#ranking li {
-  background: rgba(255,255,255,0.1);
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 10px;
+.curiosidades li {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+/* FOOTER */
+
+footer {
+  background: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+
+  .overlay h2 {
+    font-size: 2rem;
+  }
+
+  .contador span {
+    font-size: 3rem;
+  }
+
+  .timeline-container {
+    flex-direction: column;
+  }
+
+  .line {
+    width: 4px;
+    height: 50px;
+  }
+
 }

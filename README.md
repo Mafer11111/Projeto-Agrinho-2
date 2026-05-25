@@ -1,24 +1,60 @@
-# 🌱 Quiz Sustentável
+# Campo e Cidade — Conexões que Transformam
 
-Projeto desenvolvido para o Agrinho utilizando:
+Projeto desenvolvido para o concurso com o tema:
 
-- HTML
-- CSS
+## 🌱 Campo e Cidade: Conexões que Transformam
+
+O objetivo do projeto é mostrar como o campo e a cidade estão conectados através:
+
+- da produção agrícola,
+- do transporte,
+- da distribuição de alimentos,
+- e do consumo urbano.
+
+---
+
+# 🚀 Tecnologias utilizadas
+
+- HTML5
+- CSS3
 - JavaScript
+- Leaflet.js
 
-## Funcionalidades
+---
 
-✅ Perguntas aleatórias  
-✅ Cronômetro  
-✅ Barra de progresso  
-✅ Ranking com LocalStorage  
+# ✨ Funcionalidades
+
 ✅ Interface moderna  
-✅ Responsivo  
+✅ Timeline interativa  
+✅ Mapa com conexão campo → cidade  
+✅ Contador animado  
+✅ Layout responsivo  
+✅ Design educativo e visual  
 
-## Como executar
+---
 
-1. Baixe os arquivos
-2. Abra o index.html no navegador
+# 🗺️ Demonstração
 
-## Autor
-Maria Fernanda
+O mapa mostra:
+
+🌱 Produção agrícola  
+🚚 Transporte  
+🏙️ Destino urbano  
+
+---
+
+# 📚 Objetivo educacional
+
+Demonstrar a importância da conexão entre o campo e a cidade para:
+
+- alimentação,
+- economia,
+- sustentabilidade,
+- tecnologia,
+- e qualidade de vida.
+
+---
+
+# 👨‍💻 Autor
+
+Projeto desenvolvido para fins educacionais e concurso escolar.

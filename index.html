@@ -3,48 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz Sustentável</title>
+
+  <title>Campo e Cidade</title>
+
   <link rel="stylesheet" href="style.css">
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
 </head>
+
 <body>
 
-  <div class="container">
+  <header>
+    <h1>Campo e Cidade</h1>
+    <p>Conexões que Transformam</p>
+  </header>
 
-    <h1>🌱 Quiz Sustentável</h1>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="overlay">
+      <h2>Do campo para a cidade</h2>
 
-    <div class="top-bar">
-      <div id="timer">⏳ 15</div>
-      <div id="progress">Pergunta 1/5</div>
+      <p>
+        A produção rural alimenta milhões de pessoas todos os dias.
+      </p>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="cards">
+
+    <div class="card">
+      <h3>🌱 Agricultura</h3>
+
+      <p>
+        O campo produz alimentos essenciais para a vida urbana.
+      </p>
     </div>
 
-    <div class="progress-bar">
-      <div class="progress"></div>
+    <div class="card">
+      <h3>🚚 Transporte</h3>
+
+      <p>
+        Caminhões e estradas conectam produtores e consumidores.
+      </p>
     </div>
 
-    <div class="quiz-box">
-      <h2 id="question">Pergunta aqui</h2>
+    <div class="card">
+      <h3>🏙️ Cidade</h3>
 
-      <div id="answers"></div>
-
-      <button id="next-btn">Próxima</button>
+      <p>
+        Mercados, feiras e restaurantes dependem do trabalho rural.
+      </p>
     </div>
 
-    <div class="result-box hidden">
-      <h2>Resultado Final</h2>
-      <p id="score"></p>
+  </section>
 
-      <input type="text" id="player-name" placeholder="Digite seu nome">
+  <!-- CONTADOR -->
+  <section class="dados">
 
-      <button id="save-btn">Salvar Ranking</button>
+    <h2>Impacto da conexão</h2>
 
-      <h3>🏆 Ranking</h3>
-      <ul id="ranking"></ul>
+    <div class="contador">
+      <span id="contador">0</span>
 
-      <button onclick="location.reload()">Jogar Novamente</button>
+      <p>Toneladas de alimentos entregues</p>
     </div>
 
-  </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline">
+
+    <h2>Da plantação até sua mesa</h2>
+
+    <div class="timeline-container">
+
+      <div class="timeline-item">
+        <div class="circle">🌱</div>
+        <h3>Plantação</h3>
+        <p>Os alimentos começam no campo.</p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="timeline-item">
+        <div class="circle">🚜</div>
+        <h3>Colheita</h3>
+        <p>Produtores realizam a colheita.</p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="timeline-item">
+        <div class="circle">🚚</div>
+        <h3>Transporte</h3>
+        <p>Os produtos seguem para os centros urbanos.</p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="timeline-item">
+        <div class="circle">🏪</div>
+        <h3>Mercado</h3>
+        <p>Mercados e feiras recebem os alimentos.</p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="timeline-item">
+        <div class="circle">🍽️</div>
+        <h3>Consumidor</h3>
+        <p>Os alimentos chegam às famílias.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MAPA -->
+  <section class="mapa-section">
+
+    <h2>Conexão entre Campo e Cidade</h2>
+
+    <div id="map"></div>
+
+  </section>
+
+  <!-- CURIOSIDADES -->
+  <section class="curiosidades">
+
+    <h2>Curiosidades</h2>
+
+    <ul>
+      <li>🥬 Mais de 70% dos alimentos vêm da agricultura familiar.</li>
+
+      <li>🌎 A tecnologia reduz desperdícios e melhora a distribuição.</li>
+
+      <li>🚜 O agronegócio movimenta a economia das cidades.</li>
+    </ul>
+
+  </section>
+
+  <footer>
+    <p>Projeto desenvolvido para o concurso</p>
+  </footer>
 
   <script src="script.js"></script>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 </body>
 </html>
