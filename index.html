@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Sustentável</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>🌱 Quiz Sustentável</h1>
+
+    <div class="top-bar">
+      <div id="timer">⏳ 15</div>
+      <div id="progress">Pergunta 1/5</div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+
+    <div class="quiz-box">
+      <h2 id="question">Pergunta aqui</h2>
+
+      <div id="answers"></div>
+
+      <button id="next-btn">Próxima</button>
+    </div>
+
+    <div class="result-box hidden">
+      <h2>Resultado Final</h2>
+      <p id="score"></p>
+
+      <input type="text" id="player-name" placeholder="Digite seu nome">
+
+      <button id="save-btn">Salvar Ranking</button>
+
+      <h3>🏆 Ranking</h3>
+      <ul id="ranking"></ul>
+
+      <button onclick="location.reload()">Jogar Novamente</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
