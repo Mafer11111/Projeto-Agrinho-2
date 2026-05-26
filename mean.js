@@ -1,61 +1,63 @@
-/* =========================
-   CONTADOR ANIMADO
-========================= */
-
-let contador = document.getElementById("contador");
-
-let numero = 0;
-
-function aumentarContador() {
-
-  if (numero < 1000) {
-
-    numero += 10;
-
-    contador.innerHTML = numero;
-
-  }
-
+function scrollToCalc() {
+    document.getElementById('calculadora').scrollIntoView({
+        behavior: 'smooth'
+    });
 }
 
-setInterval(aumentarContador, 50);
+
+const ctx = document.getElementById('grafico');
+
+const grafico = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Sua Casa', 'Média Brasileira'],
+        datasets: [{
+            label: 'Litros por mês',
+            data: [0, 12000],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
 
 
-/* =========================
-   MAPA INTERATIVO
-========================= */
+function calcularConsumo() {
 
-const map = L.map('map').setView([-15.7801, -47.9292], 4);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-
-  attribution: '&copy; OpenStreetMap contributors'
-
-}).addTo(map);
+    const banho = Number(document.getElementById('banho').value);
+    const moradores = Number(document.getElementById('moradores').value);
+    const roupa = Number(document.getElementById('roupa').value);
+    const torneira = Number(document.getElementById('torneira').value);
 
 
-/* LOCALIZAÇÕES */
-
-const campo = L.marker([-15.7801, -47.9292]).addTo(map)
-
-  .bindPopup('🌱 Produção agrícola');
-
-
-const cidade = L.marker([-23.55052, -46.633308]).addTo(map)
-
-  .bindPopup('🏙️ Centro urbano');
+    if (!banho || !moradores || !roupa) {
+        alert('Preencha todos os campos!');
+        return;
+    }
 
 
-/* LINHA DE CONEXÃO */
+    const consumoBanho = banho * 12 * moradores * 30;
 
-const linha = L.polyline([
+    const consumoRoupa = roupa * 150 * 4;
 
-  [-15.7801, -47.9292],
-  [-23.55052, -46.633308]
+    const consumoTorneira = torneira * 30;
 
-], {
 
-  color: 'green',
-  weight: 5
+    const total = consumoBanho + consumoRoupa + consumoTorneira;
 
-}).addTo(map);
+    const economia = Math.floor(total * 0.25);
+
+
+    document.getElementById('resultado').innerHTML =
+        total.toLocaleString('pt-BR') + ' L';
+
+
+    document.getElementById('economia').innerHTML =
+        economia.toLocaleString('pt-BR') + ' L';
+}
