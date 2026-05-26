@@ -57,7 +57,4 @@ function calcularConsumo() {
     document.getElementById('resultado').innerHTML =
         total.toLocaleString('pt-BR') + ' L';
 
-
-    document.getElementById('economia').innerHTML =
-        economia.toLocaleString('pt-BR') + ' L';
 }
